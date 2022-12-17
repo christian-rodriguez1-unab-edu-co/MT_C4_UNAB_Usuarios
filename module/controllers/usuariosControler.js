@@ -12,7 +12,7 @@ const usuarios = require('../Models/usuarios')
 exports.list = async (req, res) => {
 
     try {
-        const colUsuarios = await usuarios.find({})
+        const colUsuarios = await usuarios.find({Username: req.params.Username})
         res.json(colUsuarios)
     } catch (error) {
         console.log(error)
@@ -87,10 +87,28 @@ exports.tokenval = async (req, res) => {
     const token = new usuarios(req.body)
     try {
         const usuario = await usuarios.find({
-            _id: req.params.id
+            Username: req.body.Username,
+            Rol: req.body.Rol
         })
 
-        res.json(usuario[0].Token)
+        if (usuario[0].Token == req.body.Token){
+            
+            //res.json(usuario[0].Token_Timestamp-Date.now())
+            if((Date.now()-usuario[0].Token_Timestamp)<300000){
+                const update1 = await usuarios.findByIdAndUpdate({
+                    _id: usuario[0]._id
+                }, {
+                    Token_Timestamp: Date.now()
+                })
+            }else{
+                res.json({message:"Token expirado"})
+            }
+
+        }else{
+            res.json({message:"Token Invalido"})
+        }
+
+        
     } catch (error) {
         console.log(error)
         res.send(error)
@@ -124,7 +142,7 @@ exports.login = async (req, res) => {
                 _id: usuario[0]._id
             })
 
-            res.json({Username:sesion[0].Username, Token:sesion[0].Token,Rol:sesion[0].Rol, Nombre_completo:sesion[0].Nombre_completo})
+            res.json({Username:sesion[0].Username, Token:sesion[0].Token,Rol:sesion[0].Rol, Nombre_Completo:sesion[0].Nombre_Completo})
 
         }else{
             res.json({message:"Usuario y contraseña invalidos"})

@@ -4,7 +4,7 @@ const usuariosController=require('../controllers/usuariosControler')
 
 module.exports=()=>{
     //llamado get users
-    router.get('/users',usuariosController.list)
+    router.get('/users/:Username',usuariosController.list)
 
     //llamado post users
     router.post('/users',usuariosController.add)
@@ -17,7 +17,7 @@ module.exports=()=>{
     router.delete('/users/:id',usuariosController.delete)
 
     //validar  Token
-    router.post('/token/:id',usuariosController.tokenval)
+    router.post('/token',usuariosController.tokenval)
 
 
     //llamado post login
