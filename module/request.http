@@ -1,5 +1,5 @@
 ###
-GET http://localhost:9003/users HTTP/1.1
+GET http://localhost:9003/users/esteput HTTP/1.1
 
 ###
 POST http://localhost:9003/users HTTP/1.1
@@ -38,12 +38,16 @@ DELETE http://localhost:9003/users/63922db755b5fe59c0d5e048 HTTP/1.1
 
 
 ###
-POST http://localhost:9003/token/6397f2f712da543b175a7a74 HTTP/1.1
+POST http://localhost:9003/token HTTP/1.1
 Content-Type: application/json
 
 {
 
-    "Token": "098765"
+    "Token": "e25c6c394b98c54efbe7f730d5b57cdc",
+    "Username":"esteput",
+    "Rol":"2"
+    
+    
 
     
 }
@@ -56,8 +60,8 @@ Content-Type: application/json
 
 {
 
- "Username":"lehr3456",
- "Password":"devin546445"
+ "Username":"esteput",
+ "Password":"lehr3456"
 
     
 }
