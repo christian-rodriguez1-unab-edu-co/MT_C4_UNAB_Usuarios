@@ -9,7 +9,8 @@ const usuariosSchema = new Schema({
     Token:{type:String},
     Token_Timestamp:{type:Date},
     Equipos_ID:[{ type: Schema.Types.ObjectId, ref: "equipos" }],
-    Deportes_ID:[{ type: Schema.Types.ObjectId, ref: "deportes" }]
+    Deportes_ID:[{ type: Schema.Types.ObjectId, ref: "deportes" }],
+    Activo:{type:Boolean, default:true}
 })
 
 module.exports=mongoose.model('usuarios',usuariosSchema)
