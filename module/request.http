@@ -1,0 +1,63 @@
+###
+GET http://localhost:9003/users HTTP/1.1
+
+###
+POST http://localhost:9003/users HTTP/1.1
+Content-Type: application/json
+
+{
+
+    "NombreCompleto":"Alexandro",
+    "Username":"Prueba Time",
+    "Password":"lehr3456",
+    "Rol":"2",
+    "Token":"devin33@gmail.com",
+    "TokenTimeStamp": "1"
+  
+
+    
+}
+
+###
+PUT http://localhost:9003/users/639a9d355627e5649811d417 HTTP/1.1
+Content-Type: application/json
+
+
+{
+    "NombreCompleto":"Bebitho",
+    "Username":"Este Put",
+    "Password":"lehr3456",
+    "Rol":"2",
+    "Token":"devin33@gmail.com",
+    "TokenTimeStamp": "1"
+   
+}
+
+### 
+DELETE http://localhost:9003/users/63922db755b5fe59c0d5e048 HTTP/1.1
+
+
+###
+POST http://localhost:9003/token/6397f2f712da543b175a7a74 HTTP/1.1
+Content-Type: application/json
+
+{
+
+    "Token": "098765"
+
+    
+}
+
+
+
+###
+POST http://localhost:9003/login HTTP/1.1
+Content-Type: application/json
+
+{
+
+ "Username":"lehr3456",
+ "Password":"devin546445"
+
+    
+}
